@@ -27,17 +27,17 @@ class GeofencesController < ApplicationController
   def create
     @geofence = Geofence.new(geofence_params)
     @geofence.user_id = current_user.id  # Preenchendo o campo com o id do usuário logado
-  
     respond_to do |format|
-        if @geofence.save
-          format.html { redirect_to @geofence, notice: 'Geofence was successfully created.' }
-          format.json { render :show, status: :created, location: @geofence }
-        else
-          format.html { render :new }
-          format.json { render json: @geofence.errors, status: :unprocessable_entity }
-        end
+      if @geofence.save
+        format.html { redirect_to @geofence, notice: 'Geofence was successfully created.' }
+        format.json { render :show, status: :created, location: @geofence }
+      else
+        format.html { render :new }
+        format.json { render json: @geofence.errors, status: :unprocessable_entity }
       end
     end
+  end
+
 
 
   # PATCH/PUT /geofences/1
