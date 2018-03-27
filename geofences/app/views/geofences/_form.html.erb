@@ -1,0 +1,37 @@
+<%= form_with(model: geofence, local: true) do |form| %>
+  <% if geofence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(geofence.errors.count, "error") %> prohibited this geofence from being saved:</h2>
+
+      <ul>
+      <% geofence.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :geofence_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lat %>
+    <%= form.text_field :lat, id: :geofence_lat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lon %>
+    <%= form.text_field :lon, id: :geofence_lon %>
+  </div>
+
+  <div class="field">
+    <%= form.label :radius %>
+    <%= form.text_field :radius, id: :geofence_radius %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
